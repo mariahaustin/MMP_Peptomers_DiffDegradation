@@ -18,13 +18,8 @@ figure ('Name', 'HCA');
 dendrogram(hca,'Labels',labels)
 
 %% PCA
-% This code returns four outputs: coeff, scoreTrain, explained, and mu. 
-% Use explained (percentage of total variance explained) to find the number 
-% of components required to explain >95% variability. Use coeff 
-% and mu  to apply the PCA to a test data set. Use scoreTrain (principal component
-% scores) instead of XTrain when you train a model.
  
-[coeff,score,latent,tsquared,explained, mu] = pca(XTrain);
+[coeff,score,latent, explained, mu] = pca(XTrain);
 
 idx = find(cumsum(explained)>95,1)
 
@@ -66,7 +61,6 @@ meanx5 = mean(x5);
 meany5 = mean(y5);
 
 % Calculate confidence intervals to add ellipses to score plot
-% x is a vector, matrix, or any numeric array of data. NaNs are ignored.
 % p is the confidence level (ie, 95 for 95% CI)
 % The output is 1x2 vector showing the [lower,upper] interval values.
 
